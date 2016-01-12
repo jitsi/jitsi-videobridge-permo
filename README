@@ -1,0 +1,12 @@
+Intended usage (when a new version number V of jvb is available):
+1. Start up a jitsi-meet instance (incl. jvb)
+2. Start a bunch of hammers
+3. Run collect-stats.sh on the jvb machine to collect data
+4. Copy over the data in V/data.json
+5. Run run.sh V, which will:
+    A. Crunch the numbers and update the .data files with data for version V
+    B. Create new plots in the V directory
+6. Check if the CPU usage (get it from the last line in cpu.data) is above a threshhold. Fail (whatever that means) if so.
+7. Push the new data and graphs to the repo:
+`git add *.data V && git commit -m "Perf data for version V" && git push origin master`
+

@@ -1,0 +1,20 @@
+set term pdf color enhanced rounded size 15cm,10cm font "Times-New Roman,20"
+set out "FILENAME"
+
+set xlabel "jvb version"
+set xtics 5 
+set xrange [VERSION_START:VERSION_END]
+
+set ylabel "% cpu usage per 100Mbps"
+set yrange [0:300]
+set ytics 25 
+
+set key off
+set style data points
+set grid
+set style line 1 lc rgb '#0060ad' pt 7 ps 3  # circle
+
+plot 'cpu.data' using 1:2:($2-$3):($2+$3) with errorbars, \
+     'cpu_baseline.data' with lines
+     #'version-vs-perf' with lines, \
+     #'version-vs-perf2' with points ps 2 pt 7
