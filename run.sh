@@ -7,7 +7,7 @@ fi
 
 VERSION=$1
 
-./crunsh $VERSION
+./crunch.sh $VERSION
 
 for plot in plot plot2 ;do
     cat ${plot}.template \

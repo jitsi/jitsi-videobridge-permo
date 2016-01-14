@@ -59,8 +59,8 @@ timeout=$TIMEOUT
 while [ ! $timeout -eq 0 ] ;do
     timeout=$(($timeout-1))
     
-    participants=`getColibriStats` | jq .participants
-    if [ -z $participants ] ;then participants=0; fi
+    participants=$(getColibriStats | jq .participants)
+    if [ -z $participants ]; then participants=0; fi
 
     if [ $participants -ge $NUM_HAMMERS ]; then
         break
