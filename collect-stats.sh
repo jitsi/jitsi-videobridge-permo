@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # Number of participants/hammers to expect
-NUM_HAMMERS=0
-# Wait for up to TIMEOUT seconds for at least NUM_HAMMERS participants to connect.
-TIMEOUT=8
+[ -z $NUM_HAMMERS ] && NUM_HAMMERS=0
 
-DATA_POINTS=200
-INTERVAL_S=1
+# Wait for up to TIMEOUT seconds for at least NUM_HAMMERS participants to connect.
+[ -z $TIMEOUT ] && TIMEOUT=8
+
+[ -z $DATA_POINTS ] && DATA_POINTS=200
+[ -z $INTERVAL_S ] && INTERVAL_S=1
+
 
 function getColibriStats() {
     curl http://localhost:8080/colibri/stats 2>/dev/null
