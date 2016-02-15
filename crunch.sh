@@ -20,7 +20,7 @@ length as $length |
 END
 `
 
-JQ_PRINT_STATS="$VERSION, .mean, .sd, .min, .max"
+JQ_PRINT_STATS="\"$VERSION\", .mean, .sd, .min, .max"
 
 br_mbps_stats=`cat $DATA_FILE | jq -s "map(((.colibri.bit_rate_download | tonumber) + (.colibri.bit_rate_upload | tonumber)) / 1000) | ${JQ_CALC_STATS}"`
 echo "Bitrate:" >&2
